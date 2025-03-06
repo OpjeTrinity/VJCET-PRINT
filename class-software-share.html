@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Automation Tool</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            margin: 1.5rem 0 0.5rem 0;
+            color: var(--secondary-color);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        pre {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+        }
+        
+        .btn-accent:hover {
+            background-color: #c0392b;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        .screenshot {
+            max-width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin: 1rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>VJCET Print Automation Tool</h1>
+        <p>Simplify formatting C program for Print</p>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Tool Overview</h2>
+            <p>This tool automates the process of adding student information, program titles, and compilation/execution output to text copies of your C source files.</p>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <a href="automate.c.sh" download="automate.c.sh" class="btn">Download Script</a>
+                <a href="#readme" class="btn btn-accent">View Instructions</a>
+            </div>
+        </div>
+          
+        <div class="card" id="readme">
+            <h2>README - Installation & Usage Instructions</h2>
+            
+            <h3>Installation</h3>
+            <ol>
+                <li>Download the <code>automate.c.sh</code> script using the download button above</li>
+                <li>Open Terminal and navigate to the directory where you downloaded the script</li>
+                <li>Make the script executable by running:
+                    <pre><code>chmod +x automate.c.sh</code></pre>
+                </li>
+            </ol>
+            
+            <h3>Usage</h3>
+            <ol>
+                <li>
+                    <strong>Run the script:</strong>
+                    <pre><code>./automate.c.sh</code></pre>
+                </li>
+                <li>
+                    <strong>Provide Student Information:</strong>
+                    <ul>
+                        <li>The script will prompt you to enter the student's name, class, and roll number using <code>zenity</code> dialog boxes</li>
+                        <li>It will then ask you to confirm the entered information</li>
+                        <li>If the information is incorrect, you can re-enter it</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Select C Files:</strong>
+                    <ul>
+                        <li>A file selection dialog will appear, allowing you to choose one or more C source files (<code>.c</code>)</li>
+                        <li>You can select multiple files using the appropriate selection method for your file manager</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Enter Program Titles:</strong>
+                    <ul>
+                        <li>For each selected C file, you will be prompted to enter a program title</li>
+                        <li>If you don't enter anything, the title will be "Untitled Program"</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Processing:</strong>
+                    <ul>
+                        <li>The script will create a folder named <code>PRINT_FOLDER</code> in the same directory as the script</li>
+                        <li>For each selected C file, it will:
+                            <ul>
+                                <li>Create a text copy of the C file in the <code>PRINT_FOLDER</code> directory, with the <code>.txt</code> extension</li>
+                                <li>Add the student information and program title as comments at the beginning of the text file</li>
+                                <li>Compile the C program using <code>gcc</code></li>
+                                <li>Run the compiled program and capture its output, including any user input/output</li>
+                                <li>Add the compilation and execution commands, along with the captured output, as comments to the text file</li>
+                                <li>If the C file does not compile, the script will still add the student information and program title, but the output section will contain only the attempted gcc command</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Completion:</strong>
+                    <ul>
+                        <li>A <code>zenity</code> dialog will indicate that the processing is complete</li>
+                        <li>You can find the converted text files in the <code>PRINT_FOLDER</code> directory</li>
+                        <li>You can then view and edit these text files as needed</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <h3>Requirements</h3>
+            <ul>
+                <li>Linux or macOS with bash shell</li>
+                <li>Zenity package installed for graphical dialogs</li>
+                <li>GCC compiler for compiling C programs</li>
+            </ul>
+            
+            <h3>Common Issues</h3>
+            <ul>
+                <li>
+                    <strong>Script not executable:</strong> Make sure you've run the <code>chmod +x</code> command to make the script executable
+                </li>
+                <li>
+                    <strong>Zenity not found:</strong> Install zenity using your package manager (e.g., <code>sudo apt install zenity</code> on Ubuntu)
+                </li>
+                <li>
+                    <strong>GCC not found:</strong> Install gcc using your package manager (e.g., <code>sudo apt install gcc</code> on Ubuntu)
+                </li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2>Need Help?</h2>
+            <p>If you have any questions about using this tool, please raise your issue <a target="_blank" href="https://github.com/Paul-005/Print-Prep-C/issues">Github</a></p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 VJCET24 CSE C Paul Vivek | Created for educational purposes</p>
+    </footer>
+
+</body>
+</html>

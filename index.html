@@ -5,241 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Print Automation Tool</title>
     <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-        }
+        /* Existing styles... */
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
+        /* New section styles */
+        .creators {
             background-color: var(--light-color);
-            color: var(--dark-color);
-            line-height: 1.6;
-            font-size: 16px;
-        }
-        
-        header {
-            background-color: var(--primary-color);
-            color: white;
+            padding: 2rem 0;
             text-align: center;
-            padding: 2rem 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-        
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            font-size: clamp(1.75rem, 5vw, 2.5rem);
-            margin-bottom: 0.5rem;
-            word-wrap: break-word;
-        }
-        
-        h2 {
+        .creators h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
             color: var(--primary-color);
-            margin: 1.5rem 0 1rem 0;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-            font-size: clamp(1.25rem, 4vw, 1.75rem);
+            margin-bottom: 2rem;
         }
         
-        h3 {
-            margin: 1.5rem 0 0.5rem 0;
-            color: var(--secondary-color);
-            font-size: clamp(1rem, 3vw, 1.25rem);
+        .creator {
+            display: inline-block;
+            margin: 1rem;
+            text-align: center;
+            width: 200px;
         }
         
-        p {
+        .creator img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
             margin-bottom: 1rem;
         }
         
-        ul, ol {
-            margin-left: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        li {
-            margin-bottom: 0.5rem;
-        }
-        
-        pre {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 1rem;
-            border-radius: 5px;
-            overflow-x: auto;
-            margin: 1rem 0;
-            font-size: 0.9rem;
-        }
-        
-        code {
-            font-family: 'Courier New', Courier, monospace;
-            word-break: break-word;
-        }
-        
-        .btn-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin: 2rem 0;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            min-width: 180px;
-        }
-        
-        .btn:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
-        }
-        
-        .btn:active {
-            transform: translateY(0);
-        }
-        
-        .btn-accent {
-            background-color: var(--accent-color);
-        }
-        
-        .btn-accent:hover {
-            background-color: #c0392b;
-        }
-        
-        footer {
-            background-color: var(--secondary-color);
-            color: white;
-            text-align: center;
-            padding: 1.5rem 1rem;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-        }
-        
-        .screenshot {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            margin: 1rem 0;
+        .creator a {
             display: block;
-        }
-        
-        a {
+            margin: 0.5rem 0;
             color: var(--primary-color);
             text-decoration: none;
-            transition: color 0.3s ease;
+            font-weight: bold;
         }
         
-        a:hover {
+        .creator a:hover {
             color: #2980b9;
             text-decoration: underline;
         }
         
-        /* Nested list styling */
-        ul ul, ol ol, ul ol, ol ul {
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
+        .creator .email {
+            font-size: 0.9rem;
+            color: #7f8c8d;
         }
         
-        /* Table responsiveness */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-            overflow-x: auto;
-            display: block;
-        }
-        
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        
-        th, td {
-            padding: 0.75rem;
-            text-align: left;
-        }
-        
-        th {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        /* Media Queries */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .card {
-                padding: 1.25rem;
-            }
-            
-            pre {
-                padding: 0.75rem;
-                font-size: 0.85rem;
-            }
-            
-            ul, ol {
-                margin-left: 1.25rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                font-size: 15px;
-            }
-            
-            .card {
-                padding: 1rem;
-            }
-            
-            .btn {
-                width: 100%;
-                min-width: unset;
-                padding: 0.7rem 1rem;
-            }
-            
-            pre {
-                padding: 0.5rem;
-                font-size: 0.8rem;
-            }
-            
-            ul, ol {
-                margin-left: 1rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -249,112 +62,24 @@
     </header>
     
     <div class="container">
-        <div class="card">
-            <h2>Tool Overview</h2>
-            <p>This tool automates the process of adding student information, program titles, and compilation/execution output to text copies of your C source files.</p>
-            
-            <!-- Embed YouTube Video -->
-            <h3>Watch the Demo</h3>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/dZn0N4Q6fHI?si=C96waxVKcMIcyY6o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <!-- End Embed YouTube Video -->
-
-            <div class="btn-container">
-                <a href="automate.c.sh" download="automate.c.sh" class="btn">Download Script</a>
-                <a href="#readme" class="btn btn-accent">View Instructions</a>
+        <!-- Existing content... -->
+        
+        <!-- Meet the Creators Section -->
+        <div class="creators">
+            <h2>Meet the Creators</h2>
+            <div class="creator">
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQEsA3eRkujx2w/profile-displayphoto-shrink_200_200/B56ZVciAhAHoAc-/0/1741014174694?e=2147483647&v=beta&t=kOINH6m6ne8zmyaXE2T1ETAU3KTw_X3S5GxpBimnTs0" alt="PAUL BABU">
+                <a href="https://github.com/Paul-005" target="_blank">Paul</a>
+                <a href="mailto:paul@example.com" class="email">paul24rr417@vjcet.org</a>
+            </div>
+            <div class="creator">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQGtMnqVK3zoSQ/profile-displayphoto-shrink_200_200/B4DZPF2dhTGoAc-/0/1734191209778?e=1746662400&v=beta&t=zILOsRMIARpeSvPgQ7z3f2woc7OuNvhi9hT8EHTt_nE" alt="VIVEK RAJEEV">
+                <a href="https://github.com/OpjeTrinity" target="_blank">Vivek</a>
+                <a href="mailto:vivek@example.com" class="email">vivek24rr433@vjcet.org</a>
             </div>
         </div>
-          
-        <div class="card" id="readme">
-            <h2>README - Installation & Usage Instructions</h2>
-            
-            <h3>Installation</h3>
-            <ol>
-                <li>Download the <code>automate.c.sh</code> script using the download button above</li>
-                <li>Open Terminal and navigate to the directory where you downloaded the script</li>
-                <li>Make the script executable by running:
-                    <pre><code>chmod +x automate.c.sh</code></pre>
-                </li>
-            </ol>
-            
-            <h3>Usage</h3>
-            <ol>
-                <li>
-                    <strong>Run the script:</strong>
-                    <pre><code>./automate.c.sh</code></pre>
-                </li>
-                <li>
-                    <strong>Provide Student Information:</strong>
-                    <ul>
-                        <li>The script will prompt you to enter the student's name, class, and roll number using <code>zenity</code> dialog boxes</li>
-                        <li>It will then ask you to confirm the entered information</li>
-                        <li>If the information is incorrect, you can re-enter it</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Select C Files:</strong>
-                    <ul>
-                        <li>A file selection dialog will appear, allowing you to choose one or more C source files (<code>.c</code>)</li>
-                        <li>You can select multiple files using the appropriate selection method for your file manager</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Enter Program Titles:</strong>
-                    <ul>
-                        <li>For each selected C file, you will be prompted to enter a program title</li>
-                        <li>If you don't enter anything, the title will be "Untitled Program"</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Processing:</strong>
-                    <ul>
-                        <li>The script will create a folder named <code>PRINT_FOLDER</code> in the same directory as the script</li>
-                        <li>For each selected C file, it will:
-                            <ul>
-                                <li>Create a text copy of the C file in the <code>PRINT_FOLDER</code> directory, with the <code>.txt</code> extension</li>
-                                <li>Add the student information and program title as comments at the beginning of the text file</li>
-                                <li>Compile the C program using <code>gcc</code></li>
-                                <li>Run the compiled program and capture its output, including any user input/output</li>
-                                <li>Add the compilation and execution commands, along with the captured output, as comments to the text file</li>
-                                <li>If the C file does not compile, the script will still add the student information and program title, but the output section will contain only the attempted gcc command</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Completion:</strong>
-                    <ul>
-                        <li>A <code>zenity</code> dialog will indicate that the processing is complete</li>
-                        <li>You can find the converted text files in the <code>PRINT_FOLDER</code> directory</li>
-                        <li>You can then view and edit these text files as needed</li>
-                    </ul>
-                </li>
-            </ol>
-            
-            <h3>Requirements</h3>
-            <ul>
-                <li>Linux or macOS with bash shell</li>
-                <li>Zenity package installed for graphical dialogs</li>
-                <li>GCC compiler for compiling C programs</li>
-            </ul>
-            
-            <h3>Common Issues</h3>
-            <ul>
-                <li>
-                    <strong>Script not executable:</strong> Make sure you've run the <code>chmod +x</code> command to make the script executable
-                </li>
-                <li>
-                    <strong>Zenity not found:</strong> Install zenity using your package manager (e.g., <code>sudo apt install zenity</code> on Ubuntu)
-                </li>
-                <li>
-                    <strong>GCC not found:</strong> Install gcc using your package manager (e.g., <code>sudo apt install gcc</code> on Ubuntu)
-                </li>
-            </ul>
-        </div>
         
-        <div class="card">
-            <h2>Need Help?</h2>
-            <p>If you have any questions about using this tool, please raise your issue <a target="_blank" href="https://github.com/Paul-005/Print-Prep-C/issues">Github</a></p>
-        </div>
+        <!-- Existing content... -->
     </div>
     
     <footer>

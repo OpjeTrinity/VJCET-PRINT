@@ -403,24 +403,106 @@
             <h2>Meet the Creators</h2>
             <div class="creator">
                 <img src="https://paulbabu.netlify.app/assets/img/paul-profile.jpg" alt="PAUL BABU">
-                <a href="https://github.com/Paul-005" target="_blank">Paul</a>
-                <a href="mailto:paul24rr417@vjcet.org" class="paul24rr417@vjcet.org">email</a>
+                <h1>Paul Babu</h1>
+                <a href="https://github.com/Paul-005" target="_blank">Github</a>
+                <a href="mailto:paul24rr417@vjcet.org" class="email">paul24rr417@vjcet.org</a>
             </div>
             <div class="creator">
-                <img src="https://lh3.googleusercontent.com/pw/AP1GczMPW2I4-AqgRxzC0oyHvV9YeCb6Oqj_wi2xfxddHLGgd_8FdHPTlpbDtlV-msW3VsZ46dpSJ_XvOryYkKPNytW4E8H9pKzHodUvWLbXY-FQrA2qS8hMMu6YpOqP0asl-QvzjPh5_xKHY7yejGMo6H6M=w271-h595-s-no-gm" alt="VIVEK RAJEEV">
-                <a href="https://github.com/OpjeTrinity" target="_blank">Vivek</a>
-                <a href="mailto:vivek24rr433@vjcet.org" class="vivek24rr433@vjcet.org">email</a>
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczM9RN0jjI-ObNCTDZtlgkRoOJBOcxduWY6d-1BZU8tP8x4OyFwyVpNBW1sMatiph5T8WX0IhkBeKPdstyKmZXgq1AlZoWVi8IJqb-vXNa_8Rbf8xRymipS7BgRDTIe-gtjmVszLa48pgcuI90IDzDz2=w399-h595-s-no-gm" alt="VIVEK RAJEEV">
+                <h1>Vivek Rajeev</h1>
+                <a href="https://github.com/OpjeTrinity" target="_blank">Github</a>
+                <a href="mailto:vivek24rr433@vjcet.org" class="email">vivek24rr433@vjcet.org</a>
             </div>
         </div>
-
-        <div class="card">
-            <h2>Need Help?</h2>
-            <p>If you have any questions about using this tool, please raise your issue <a target="_blank" href="https://github.com/Paul-005/Print-Prep-C/issues">Github</a></p>
-        </div>
+    <div class="card">
+        <h2>Need Help?</h2>
+        <p>If you have any questions about using this tool, please raise your issue 
+            <a target="_blank" href="https://github.com/Paul-005/Print-Prep-C/issues">on GitHub</a>.
+        </p>
     </div>
-    
+
+    <!-- Comment Box Section -->
+    <div class="card">
+        <h2>Leave a Comment</h2>
+        <textarea id="commentBox" rows="4" placeholder="Type your comment here..."></textarea><br>
+        <button onclick="submitComment()">Submit</button>
+
+        <h3>Comments:</h3>
+        <div id="commentsSection"></div>
+    </div>
+
     <footer>
         <p>&copy; 2025 VJCET24 CSE C Paul & Vivek | Created for educational purposes</p>
     </footer>
+
+    <script>
+        function submitComment() {
+            var comment = document.getElementById("commentBox").value;
+            if (comment.trim() === "") {
+                alert("Please enter a comment!");
+                return;
+            }
+
+            var commentDisplay = document.createElement("div");
+            commentDisplay.className = "comment";
+            commentDisplay.textContent = comment;
+
+            document.getElementById("commentsSection").appendChild(commentDisplay);
+
+            document.getElementById("commentBox").value = ""; // Clear input field
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #commentsSection {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .comment {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #007BFF;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #eee;
+        }
+    </style>
+
 </body>
 </html>
